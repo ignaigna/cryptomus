@@ -24,7 +24,7 @@ import { Cryptomus } from "@qweme32/cryptomus";
 import { v4 as uuid } from "uuid";
 
 async function main() {
-    const cryptomus = new Cryptomus("merchant", "payment-token", "payout-token");
+    const cryptomus = new Cryptomus("merchant", "payment-token");
 
     return cryptomus.createPayment({
         amount: "100",

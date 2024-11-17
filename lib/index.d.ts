@@ -1,9 +1,8 @@
-import { E_HTTP, E_TOKEN, I_BLOCK_STATIC_WALLET_REQUEST, I_BLOCK_STATIC_WALLET_RESPONSE, I_CREATE_PAYMENT_REQUEST, I_CREATE_PAYMENT_RESPONSE, I_CREATE_STATIC_WALLET_REQUEST, I_CREATE_STATIC_WALLET_RESPONSE, I_GEN_QR_REQUEST, I_GEN_QR_RESPONSE, I_PAYMENT_INFO_REQUEST, I_PAYMENT_INFO_RESPONSE, I_PAYMENT_REFUND_REQUEST, I_PAYMENT_REFUND_RESPONSE, I_REFUND_FROM_BLOCK_WALLET_REQUEST, I_REFUND_FROM_BLOCK_WALLET_RESPONSE, I_RESEND_WEBHOOK_REQUEST, I_RESEND_WEBHOOK_RESPONSE, I_TEST_WEBHOOK_REQUEST, I_TEST_WEBHOOK_RESPONSE } from './types';
+import { E_HTTP, E_TOKEN, type I_BLOCK_STATIC_WALLET_REQUEST, type I_BLOCK_STATIC_WALLET_RESPONSE, type I_CREATE_PAYMENT_REQUEST, type I_CREATE_PAYMENT_RESPONSE, type I_CREATE_STATIC_WALLET_REQUEST, type I_CREATE_STATIC_WALLET_RESPONSE, type I_GEN_QR_REQUEST, type I_GEN_QR_RESPONSE, type I_PAYMENT_INFO_REQUEST, type I_PAYMENT_INFO_RESPONSE, type I_PAYMENT_REFUND_REQUEST, type I_PAYMENT_REFUND_RESPONSE, type I_REFUND_FROM_BLOCK_WALLET_REQUEST, type I_REFUND_FROM_BLOCK_WALLET_RESPONSE, type I_RESEND_WEBHOOK_REQUEST, type I_RESEND_WEBHOOK_RESPONSE, type I_TEST_WEBHOOK_REQUEST, type I_TEST_WEBHOOK_RESPONSE, type I_CREATE_RECURRING_REQUEST, type I_CREATE_RECURRING_RESPONSE, type I_RECURRING_INFO_REQUEST, type I_RECURRING_INFO_RESPONSE, type I_RECURRING_LIST_REQUEST, type I_RECURRING_LIST_RESPONSE, type I_RECURRING_CANCEL_REQUEST, type I_RECURRING_CANCEL_RESPONSE } from "./types";
 export declare class Cryptomus {
     private readonly merchant;
     private readonly paymentToken;
-    private readonly payoutToken;
-    constructor(merchant: string, paymentToken: string, payoutToken: string);
+    constructor(merchant: string, paymentToken: string);
     /**
      * Sends a request to the specified route using the given HTTP method and token type.
      *
@@ -38,8 +37,8 @@ export declare class Cryptomus {
     /**
      * Blocks a static wallet.
      *
-     * @param {I_BLOCK_STATIC_WALLER_REQUEST} options - The options for blocking the wallet.
-     * @return {Promise<I_BLOCK_STATIC_WALLER_RESPONSE>} - A promise that resolves to the response of the blocking operation.
+     * @param {I_BLOCK_STATIC_WALLET_REQUEST} options - The options for blocking the wallet.
+     * @return {Promise<I_BLOCK_STATIC_WALLET_RESPONSE>} - A promise that resolves to the response of the blocking operation.
      */
     blockStaticWallet(options: I_BLOCK_STATIC_WALLET_REQUEST): Promise<I_BLOCK_STATIC_WALLET_RESPONSE>;
     /**
@@ -78,12 +77,33 @@ export declare class Cryptomus {
      */
     testPaymentWebhook(options: I_TEST_WEBHOOK_REQUEST): Promise<I_TEST_WEBHOOK_RESPONSE>;
     /**
-     * Sends a test payout webhook request and returns the response.
+     * Creates a recurring payment.
      *
-     * @param {I_TEST_WEBHOOK_REQUEST} options - The options for the test webhook request.
-     * @return {Promise<I_TEST_WEBHOOK_RESPONSE>} - The response from the test webhook request.
+     * @param {I_CREATE_RECURRING_REQUEST} options - The recurring payment options.
+     * @return {Promise<I_CREATE_RECURRING_RESPONSE>} The response of creating a recurring payment.
      */
-    testPayoutWebhook(options: I_TEST_WEBHOOK_REQUEST): Promise<I_TEST_WEBHOOK_RESPONSE>;
+    createRecurring(options: I_CREATE_RECURRING_REQUEST): Promise<I_CREATE_RECURRING_RESPONSE>;
+    /**
+     * Gets information about a recurring payment.
+     *
+     * @param {I_RECURRING_INFO_REQUEST} options - The recurring payment info request options.
+     * @return {Promise<I_RECURRING_INFO_RESPONSE>} The recurring payment information.
+     */
+    getRecurringInfo(options: I_RECURRING_INFO_REQUEST): Promise<I_RECURRING_INFO_RESPONSE>;
+    /**
+     * Gets a list of recurring payments.
+     *
+     * @param {I_RECURRING_LIST_REQUEST} options - The recurring payment list request options.
+     * @return {Promise<I_RECURRING_LIST_RESPONSE>} The list of recurring payments.
+     */
+    getRecurringList(options?: I_RECURRING_LIST_REQUEST): Promise<I_RECURRING_LIST_RESPONSE>;
+    /**
+     * Cancels a recurring payment.
+     *
+     * @param {I_RECURRING_CANCEL_REQUEST} options - The recurring payment cancel request options.
+     * @return {Promise<I_RECURRING_CANCEL_RESPONSE>} The response of canceling the recurring payment.
+     */
+    cancelRecurring(options: I_RECURRING_CANCEL_REQUEST): Promise<I_RECURRING_CANCEL_RESPONSE>;
     /**
      * Generates a signature for the given data and key.
      *

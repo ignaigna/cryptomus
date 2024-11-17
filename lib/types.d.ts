@@ -6,8 +6,7 @@ export declare enum E_HTTP {
     DELETE = "DELETE"
 }
 export declare enum E_TOKEN {
-    PAYMENT = "PAYMENT",
-    PAYOUT = "PAYOUT"
+    PAYMENT = "PAYMENT"
 }
 export declare enum E_PAYMENT_STATUS {
     PAID = "paid",
@@ -176,4 +175,110 @@ export interface I_TEST_WEBHOOK_REQUEST {
 export interface I_TEST_WEBHOOK_RESPONSE {
     state: number;
     result: [];
+}
+export interface I_CREATE_RECURRING_REQUEST {
+    amount: string;
+    currency: string;
+    name: string;
+    period: string;
+    payer_id?: string;
+    merchant_payment_id?: string;
+    network?: string;
+    url_callback?: string;
+    url_return?: string;
+    is_payment_multiple?: boolean;
+    subtract_fee_from_amount?: boolean;
+    additional_data?: string;
+}
+export interface I_CREATE_RECURRING_RESPONSE {
+    state: number;
+    result: {
+        uuid: string;
+        order_id: string;
+        amount: string;
+        payment_amount: string;
+        payment_amount_usd: string;
+        merchant_amount: string;
+        commission: string;
+        currency: string;
+        network: string;
+        address: string;
+        from: string;
+        payment_status: string;
+        url: string;
+        expired_at: number;
+        status: string;
+        is_final: boolean;
+        additional_data: string;
+        created_at: string;
+        updated_at: string;
+    };
+}
+export interface I_RECURRING_INFO_REQUEST {
+    uuid?: string;
+    order_id?: string;
+}
+export interface I_RECURRING_INFO_RESPONSE {
+    state: number;
+    result: {
+        uuid: string;
+        order_id: string;
+        amount: string;
+        currency: string;
+        network: string;
+        status: string;
+        payer_id: string;
+        merchant_payment_id: string;
+        url_callback: string;
+        url_return: string;
+        is_payment_multiple: boolean;
+        additional_data: string;
+        created_at: string;
+        updated_at: string;
+    };
+}
+export interface I_RECURRING_LIST_REQUEST {
+    page?: number;
+    limit?: number;
+}
+export interface I_RECURRING_LIST_RESPONSE {
+    state: number;
+    result: {
+        items: Array<{
+            uuid: string;
+            order_id: string;
+            amount: string;
+            currency: string;
+            network: string;
+            status: string;
+            payer_id: string;
+            merchant_payment_id: string;
+            url_callback: string;
+            url_return: string;
+            is_payment_multiple: boolean;
+            additional_data: string;
+            created_at: string;
+            updated_at: string;
+        }>;
+        paginate: {
+            count: number;
+            hasPages: boolean;
+            nextPage: number | null;
+            page: number;
+            previousPage: number | null;
+            totalCount: number;
+            totalPages: number;
+        };
+    };
+}
+export interface I_RECURRING_CANCEL_REQUEST {
+    uuid?: string;
+    order_id?: string;
+}
+export interface I_RECURRING_CANCEL_RESPONSE {
+    state: number;
+    result: {
+        uuid: string;
+        status: string;
+    };
 }
