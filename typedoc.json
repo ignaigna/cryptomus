@@ -1,8 +1,8 @@
 {
 	"$schema": "https://typedoc.org/schema.json",
-	"plugin": ["@mxssfd/typedoc-theme"],
+	"plugin": ["typedoc-material-theme"],
+	"themeColor": "#7863d4",
 	"disableSources": true,
-	"theme": "my-theme",
 	"entryPoints": ["src/*.ts"],
 	"exclude": ["node_modules", "src/*.test.ts"]
 }
