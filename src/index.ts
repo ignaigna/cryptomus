@@ -56,7 +56,7 @@ export class Cryptomus {
 		const headers = {
 			"Content-Type": "application/json",
 			Merchant: this.merchant,
-			Sign: this.makeSignatue(data, this.paymentToken),
+			Sign: this.makeSignature(data, this.paymentToken),
 		};
 
 		const options: RequestInit = {
@@ -314,12 +314,12 @@ export class Cryptomus {
 	 * @param {string} key - The key used in the signature generation.
 	 * @return {string} The generated signature.
 	 */
-	makeSignatue(data: Record<string, any>, key: string): string {
-		const signatue = createHash("md5")
+	makeSignature(data: Record<string, any>, key: string): string {
+		const signature = createHash("md5")
 			.update(Buffer.from(JSON.stringify(data)).toString("base64") + key)
 			.digest("hex");
 
-		return signatue;
+		return signature;
 	}
 
 	/**
@@ -328,10 +328,10 @@ export class Cryptomus {
 	 * @param {Record<string, any>} data - The data to verify the signature for.
 	 * @return {boolean} Returns true if the signature is valid, false otherwise.
 	 */
-	verifySignatue(data: Record<string, any>): boolean {
+	verifySignature(data: Record<string, any>): boolean {
 		const remote = data.sign;
 		data.sign = undefined;
 
-		return remote === this.makeSignatue(data, this.paymentToken);
+		return remote === this.makeSignature(data, this.paymentToken);
 	}
 }
