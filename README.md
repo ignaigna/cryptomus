@@ -11,16 +11,16 @@ This module is a library for working with the Cryptomus API in a Node.js, writte
 ## Features
 
 - Full typing for request and response to ensure secure development.
-- Web docs - <a href="https://qweme32.github.io/cryptomus">click</a>
+- Web docs - <a href="https://ignaigna.github.io/cryptomus">click</a>
 
 ## Install
 ```bash
-npm i @qweme32/cryptomus
+npm i git+https://github.com/ignaigna/cryptomus
 ```
 
 ## Example
 ```ts
-import { Cryptomus } from "@qweme32/cryptomus";
+import { Cryptomus } from "@ignaigna/cryptomus";
 import { v4 as uuid } from "uuid";
 
 async function main() {
@@ -36,4 +36,4 @@ async function main() {
 main().then(console.log);
 ```
 
-<center><a href="https://qweme32.github.io/cryptomus">Web docs</a><br>With < 3 by qweme</center>
+<center><a href="https://ignaigna.github.io/cryptomus">Web docs</a><br>With ️❤ by qweme (and forked by igna)</center>
