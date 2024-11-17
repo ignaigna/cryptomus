@@ -39,4 +39,20 @@ describe("Cryptomus", () => {
 
 		expect(response.result.amount).toBe("10.00");
 	});
+
+	test("Get payment", async () => {
+		const response = await cryptomus.getPayment({
+			order_id: uuid(),
+		});
+
+		expect(response.result).toBeNull();
+	});
+
+	test("Get recurring payment", async () => {
+		const response = await cryptomus.getRecurringInfo({
+			order_id: uuid(),
+		});
+
+		expect(response.result).toBeNull();
+	});
 });
