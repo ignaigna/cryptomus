@@ -111,12 +111,12 @@ export declare class Cryptomus {
      * @param {string} key - The key used in the signature generation.
      * @return {string} The generated signature.
      */
-    makeSignatue(data: Record<string, any>, key: string): string;
+    makeSignature(data: Record<string, any>, key: string): string;
     /**
      * Verifies the signature of the given data.
      *
      * @param {Record<string, any>} data - The data to verify the signature for.
      * @return {boolean} Returns true if the signature is valid, false otherwise.
      */
-    verifySignatue(data: Record<string, any>): boolean;
+    verifySignature(data: Record<string, any>): boolean;
 }
