@@ -1,6 +1,6 @@
 {
 	"name": "@ignaigna/cryptomus",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"description": "Node wrapper for cryptomus api",
 	"main": "lib/index.js",
 	"types": "lib/index.d.ts",
@@ -28,7 +28,7 @@
 	"bugs": {
 		"url": "https://github.com/ignaigna/cryptomus/issues"
 	},
-	"homepage": "https://github.com/ignaigna/cryptomus#readme",
+	"homepage": "https://ignaigna.github.io/cryptomus/",
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
 		"@mxssfd/typedoc-theme": "^1.1.7",
